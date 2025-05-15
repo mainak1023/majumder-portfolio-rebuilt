@@ -1,7 +1,8 @@
 
 import React, { useEffect, useState } from 'react';
-import { Github } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Github, Star, GitFork } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
+import { useToast } from '@/components/ui/use-toast';
 
 type Project = {
   name: string;
@@ -14,76 +15,45 @@ type Project = {
 
 const ProjectCard = ({ project }: { project: Project }) => {
   return (
-    <div className="bg-white rounded-lg shadow-card overflow-hidden hover:shadow-lg transition-shadow border border-gray-100">
-      <div className="p-6">
-        <div className="flex justify-between items-start">
-          <h3 className="text-xl font-bold text-portfolio-secondary">{project.name}</h3>
-          <a 
-            href={project.url} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="text-portfolio-secondary hover:text-portfolio-primary transition-colors"
-          >
-            <Github size={20} />
-          </a>
+    <Card className="overflow-hidden border border-gray-100 hover:shadow-md transition-all">
+      <CardContent className="p-6">
+        <div className="flex items-start mb-2">
+          <Github size={18} className="mr-2 mt-1 text-gray-600" />
+          <h3 className="text-lg font-medium">{project.name}</h3>
         </div>
         
-        <p className="mt-3 text-portfolio-light-text h-24 overflow-hidden">
+        <p className="text-sm text-portfolio-light-text mb-4 h-16 overflow-hidden">
           {project.description || "No description available"}
         </p>
         
-        <div className="flex items-center justify-between mt-6">
-          <div className="flex items-center space-x-4">
-            <div className="flex items-center">
-              <span className="mr-1">⭐</span>
-              <span className="text-sm text-portfolio-light-text">{project.stars}</span>
-            </div>
-            <div className="flex items-center">
-              <span className="mr-1">🍴</span>
-              <span className="text-sm text-portfolio-light-text">{project.forks}</span>
-            </div>
+        <div className="flex items-center text-xs text-gray-500">
+          <div className="flex items-center mr-4">
+            <Star size={14} className="mr-1" />
+            <span>{project.stars}</span>
           </div>
-          
-          <div className="flex items-center">
-            <span 
-              className="px-3 py-1 text-xs font-medium rounded-full"
-              style={{
-                backgroundColor: getLanguageColor(project.language),
-                color: getLabelColor(project.language)
-              }}
-            >
-              {project.language || "Unknown"}
-            </span>
+          <div className="flex items-center mr-4">
+            <GitFork size={14} className="mr-1" />
+            <span>{project.forks}</span>
           </div>
+          {project.language && (
+            <div className="flex items-center ml-auto">
+              <span 
+                className="w-2.5 h-2.5 rounded-full mr-1.5"
+                style={{ backgroundColor: getLanguageColor(project.language) }}
+              />
+              <span>{project.language}</span>
+            </div>
+          )}
         </div>
-      </div>
-    </div>
+      </CardContent>
+    </Card>
   );
 };
 
 // Function to get color based on programming language
 const getLanguageColor = (language: string): string => {
   const colors: {[key: string]: string} = {
-    "JavaScript": "#f1e05a20",
-    "TypeScript": "#2b748920",
-    "Python": "#3572A520",
-    "Java": "#b0753120",
-    "Go": "#00ADD820",
-    "PHP": "#4F5D9520",
-    "C#": "#17860020",
-    "Ruby": "#70121220",
-    "CSS": "#56399320",
-    "HTML": "#e34c2620",
-    "Swift": "#ffac4520",
-    "Kotlin": "#F1825020",
-  };
-  
-  return colors[language] || "#e0e0e0";
-};
-
-const getLabelColor = (language: string): string => {
-  const colors: {[key: string]: string} = {
-    "JavaScript": "#7d741c",
+    "JavaScript": "#f1e05a",
     "TypeScript": "#2b7489",
     "Python": "#3572A5",
     "Java": "#b07531",
@@ -97,16 +67,16 @@ const getLabelColor = (language: string): string => {
     "Kotlin": "#F18250",
   };
   
-  return colors[language] || "#333333";
+  return colors[language] || "#e0e0e0";
 };
 
 const Projects = () => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
+  const { toast } = useToast();
 
   useEffect(() => {
     // This is a mock function to simulate fetching projects from GitHub API
-    // In a real application, you would fetch data from GitHub API
     const fetchProjects = () => {
       setLoading(true);
       
@@ -114,52 +84,68 @@ const Projects = () => {
       setTimeout(() => {
         const mockProjects = [
           {
-            name: "smart-home-dashboard",
-            description: "A modern dashboard for smart home devices with real-time monitoring and control features.",
-            stars: 124,
-            forks: 37,
+            name: "gitprofile",
+            description: "Create and publish a dynamic portfolio by just providing your GitHub username.",
+            stars: 1010,
+            forks: 141,
             language: "TypeScript",
-            url: "https://github.com/mainakmajumder/smart-home-dashboard"
+            url: "https://github.com/mainakmajumder/gitprofile"
           },
           {
-            name: "serverless-image-processor",
-            description: "Serverless application for processing and optimizing images using cloud functions.",
-            stars: 97,
-            forks: 23,
+            name: "ezfolio",
+            description: "Open Source Portfolio/Resume CMS built using Laravel, React and Ant Design.",
+            stars: 270,
+            forks: 84,
+            language: "PHP",
+            url: "https://github.com/mainakmajumder/ezfolio"
+          },
+          {
+            name: "reactive-button",
+            description: "3D animated react button component with progress bar.",
+            stars: 136,
+            forks: 21,
             language: "JavaScript",
-            url: "https://github.com/mainakmajumder/serverless-image-processor"
+            url: "https://github.com/mainakmajumder/reactive-button"
           },
           {
-            name: "react-data-grid",
-            description: "A high-performance React component for rendering and managing large datasets with advanced filtering and sorting.",
-            stars: 215,
-            forks: 42,
-            language: "TypeScript",
-            url: "https://github.com/mainakmajumder/react-data-grid"
+            name: "OneClick",
+            description: "Navigate to your favorite actions on the websites you love with just one click.",
+            stars: 80,
+            forks: 19,
+            language: "JavaScript",
+            url: "https://github.com/mainakmajumder/OneClick"
           },
           {
-            name: "microservice-framework",
-            description: "A lightweight framework for building scalable microservices with built-in service discovery and load balancing.",
-            stars: 183,
-            forks: 31,
-            language: "Go",
-            url: "https://github.com/mainakmajumder/microservice-framework"
-          },
-          {
-            name: "blockchain-explorer",
-            description: "A web application for exploring and visualizing blockchain transactions and smart contracts.",
-            stars: 76,
+            name: "reforge",
+            description: "An out-of-box UI solution for enterprise applications as a React boilerplate.",
+            stars: 64,
             forks: 18,
-            language: "JavaScript",
-            url: "https://github.com/mainakmajumder/blockchain-explorer"
+            language: "TypeScript",
+            url: "https://github.com/mainakmajumder/reforge"
           },
           {
-            name: "ml-recommendation-engine",
-            description: "A machine learning-based recommendation engine for personalized content delivery.",
-            stars: 132,
-            forks: 29,
-            language: "Python",
-            url: "https://github.com/mainakmajumder/ml-recommendation-engine"
+            name: "react-laravel",
+            description: "A simple crud based laravel app to learn how to use react with laravel.",
+            stars: 61,
+            forks: 28,
+            language: "PHP",
+            url: "https://github.com/mainakmajumder/react-laravel"
+          },
+          {
+            name: "reddit-image-fetcher",
+            description: "A JavaScript package for fetching reddit images, memes, wallpapers and more.",
+            stars: 48,
+            forks: 9,
+            language: "JavaScript",
+            url: "https://github.com/mainakmajumder/reddit-image-fetcher"
+          },
+          {
+            name: "blogys",
+            description: "JavaScript client to get recent blog posts from your blogging platforms.",
+            stars: 42,
+            forks: 9,
+            language: "JavaScript",
+            url: "https://github.com/mainakmajumder/blogys"
           }
         ];
         
@@ -172,17 +158,17 @@ const Projects = () => {
   }, []);
 
   return (
-    <section id="projects" className="py-20 bg-portfolio-background">
-      <div className="container mx-auto">
-        <div className="flex justify-between items-center mb-16">
-          <h2 className="text-3xl font-bold text-portfolio-secondary">GitHub Projects</h2>
+    <section id="projects" className="py-16 bg-white">
+      <div className="container mx-auto px-4">
+        <div className="flex justify-between items-center mb-8">
+          <h2 className="text-2xl font-bold text-gray-800">Github Projects</h2>
           <a 
             href="https://github.com/mainakmajumder" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="text-portfolio-primary hover:underline font-medium flex items-center"
+            className="text-sm text-gray-600 hover:text-portfolio-primary flex items-center"
           >
-            See All <span className="ml-1">→</span>
+            See All
           </a>
         </div>
         
@@ -191,18 +177,12 @@ const Projects = () => {
             <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-portfolio-primary"></div>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
             {projects.map((project, index) => (
               <ProjectCard key={index} project={project} />
             ))}
           </div>
         )}
-        
-        <div className="text-center mt-12">
-          <Button className="bg-portfolio-primary hover:bg-portfolio-primary/90">
-            <Github size={18} className="mr-2" /> View More on GitHub
-          </Button>
-        </div>
       </div>
     </section>
   );

@@ -1,22 +1,35 @@
 
 import React from 'react';
+import { Card, CardContent } from '@/components/ui/card';
 
 type ExperienceItem = {
   period: string;
-  title: string;
+  position: string;
   company: string;
-  description: string;
 };
 
 const ExperienceCard = ({ item }: { item: ExperienceItem }) => {
   return (
-    <div className="mb-12 relative pl-8 before:absolute before:left-0 before:top-2 before:w-4 before:h-4 before:rounded-full before:bg-portfolio-primary before:shadow-md before:shadow-portfolio-primary/30">
-      <div className="ml-2 relative before:absolute before:left-[-1.3rem] before:top-6 before:bottom-[-3rem] before:w-0.5 before:bg-gray-200 last:before:hidden">
-        <span className="text-sm text-portfolio-light-text font-medium">{item.period}</span>
-        <h3 className="text-xl font-bold text-portfolio-secondary mt-1">{item.title}</h3>
-        <p className="text-portfolio-primary font-medium mb-3">{item.company}</p>
-        <p className="text-portfolio-light-text">{item.description}</p>
-      </div>
+    <div className="mb-6 relative pl-6 before:absolute before:left-0 before:top-1.5 before:w-2 before:h-2 before:rounded-full before:bg-gray-400">
+      <div className="text-xs text-gray-500 mb-1">{item.period}</div>
+      <div className="font-medium">{item.position}</div>
+      <div className="text-sm text-gray-600">{item.company}</div>
+    </div>
+  );
+};
+
+type EducationItem = {
+  period: string;
+  degree: string;
+  institution: string;
+};
+
+const EducationCard = ({ item }: { item: EducationItem }) => {
+  return (
+    <div className="mb-6 relative pl-6 before:absolute before:left-0 before:top-1.5 before:w-2 before:h-2 before:rounded-full before:bg-gray-400">
+      <div className="text-xs text-gray-500 mb-1">{item.period}</div>
+      <div className="font-medium">{item.degree}</div>
+      <div className="text-sm text-gray-600">{item.institution}</div>
     </div>
   );
 };
@@ -24,64 +37,75 @@ const ExperienceCard = ({ item }: { item: ExperienceItem }) => {
 const Experience = () => {
   const experiences: ExperienceItem[] = [
     {
-      period: "Jan 2023 - Present",
-      title: "Senior Software Engineer",
-      company: "Tech Innovations Inc.",
-      description: "Leading the development of scalable microservices architecture. Implemented CI/CD pipelines that reduced deployment time by 40%. Mentoring junior developers and conducting code reviews."
+      period: "September 2023 - Present",
+      position: "Senior Software Engineer",
+      company: "Tech Innovations Inc."
     },
     {
-      period: "Mar 2021 - Dec 2022",
-      title: "Full-Stack Developer",
-      company: "Digital Solutions Ltd.",
-      description: "Developed responsive web applications using React and Node.js. Optimized database queries resulting in 30% faster load times. Collaborated with UX team to implement user-friendly interfaces."
-    },
-    {
-      period: "Jun 2019 - Feb 2021",
-      title: "Frontend Engineer",
-      company: "WebCraft Technologies",
-      description: "Built interactive user interfaces with React and TypeScript. Integrated REST APIs and GraphQL endpoints. Implemented state management solutions using Redux and Context API."
+      period: "July 2019 - August 2023",
+      position: "Full-Stack Developer",
+      company: "Digital Solutions Ltd."
     }
   ];
 
-  const educationItems: ExperienceItem[] = [
+  const educationItems: EducationItem[] = [
     {
       period: "2015 - 2019",
-      title: "B.Tech in Computer Science",
-      company: "Tech University",
-      description: "Specialized in Software Engineering and Distributed Systems. Graduated with honors."
+      degree: "Bachelor of Technology",
+      institution: "Tech University"
     },
     {
-      period: "2022",
+      period: "2012 - 2014",
+      degree: "Associate Degree",
+      institution: "Community College"
+    }
+  ];
+
+  const certifications = [
+    {
+      period: "March 2024",
       title: "AWS Certified Solutions Architect",
-      company: "Amazon Web Services",
-      description: "Professional certification demonstrating expertise in designing distributed systems on AWS."
+      description: "Professional certification in cloud architecture"
     }
   ];
 
   return (
-    <section id="experience" className="py-20 bg-white">
-      <div className="container mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-16 text-portfolio-secondary">Experience & Education</h2>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          <div>
-            <h3 className="text-2xl font-bold mb-8 text-portfolio-secondary">Work Experience</h3>
-            <div className="space-y-2">
+    <section className="py-10 bg-white">
+      <div className="container mx-auto px-4">
+        <Card className="mb-6">
+          <CardContent className="p-6">
+            <h2 className="text-lg font-medium mb-4">Experience</h2>
+            <div>
               {experiences.map((exp, index) => (
                 <ExperienceCard key={index} item={exp} />
               ))}
             </div>
-          </div>
-          
-          <div>
-            <h3 className="text-2xl font-bold mb-8 text-portfolio-secondary">Education & Certifications</h3>
-            <div className="space-y-2">
+          </CardContent>
+        </Card>
+        
+        <Card className="mb-6">
+          <CardContent className="p-6">
+            <h2 className="text-lg font-medium mb-4">Education</h2>
+            <div>
               {educationItems.map((edu, index) => (
-                <ExperienceCard key={index} item={edu} />
+                <EducationCard key={index} item={edu} />
               ))}
             </div>
-          </div>
-        </div>
+          </CardContent>
+        </Card>
+        
+        <Card>
+          <CardContent className="p-6">
+            <h2 className="text-lg font-medium mb-4">Certification</h2>
+            {certifications.map((cert, index) => (
+              <div key={index} className="mb-4">
+                <div className="text-xs text-gray-500 mb-1">{cert.period}</div>
+                <div className="font-medium">{cert.title}</div>
+                <div className="text-sm text-gray-600">{cert.description}</div>
+              </div>
+            ))}
+          </CardContent>
+        </Card>
       </div>
     </section>
   );
