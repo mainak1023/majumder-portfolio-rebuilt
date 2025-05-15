@@ -20,12 +20,12 @@ const Index = () => {
             <ThemeSelector />
             <Hero />
             <TechStack />
+            <Experience />
+            <Education />
           </div>
           <div className="md:col-span-2 space-y-6">
             <Publications />
             <LiveProjects />
-            <Experience />
-            <Education />
             <Certifications />
             <Projects />
           </div>
