@@ -8,7 +8,7 @@ const Header = () => {
     <header className="bg-white py-4 hidden">
       <div className="container mx-auto flex items-center justify-between">
         <Link to="/" className="font-medium">
-          Portfolio
+          Portfolio - Mainak
         </Link>
       </div>
     </header>

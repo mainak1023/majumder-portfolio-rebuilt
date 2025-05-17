@@ -29,7 +29,7 @@ const Projects = () => {
         setLoading(false);
       }
     };
-    
+
     getProjects();
   }, [toast]);
 
@@ -43,16 +43,16 @@ const Projects = () => {
                 <Github className="mr-2 text-portfolio-primary dark:text-blue-400" size={20} />
                 <h2 className="text-lg font-medium dark:text-white">Github Projects</h2>
               </div>
-              <a 
-                href="https://github.com/mainakmajumder" 
-                target="_blank" 
+              <a
+                href="https://github.com/mainak1023"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="text-sm text-gray-600 dark:text-gray-300 hover:text-portfolio-primary dark:hover:text-blue-400 flex items-center"
               >
                 See All
               </a>
             </div>
-            
+
             {loading ? (
               <ProjectsLoading />
             ) : (

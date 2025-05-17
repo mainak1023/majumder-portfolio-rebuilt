@@ -32,7 +32,7 @@ const Skills = () => {
     <section id="skills" className="py-20 bg-portfolio-background">
       <div className="container mx-auto">
         <h2 className="text-3xl font-bold text-center mb-16 text-portfolio-secondary">Tech Stack</h2>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           <SkillCategory title="Frontend" skills={frontendSkills} />
           <SkillCategory title="Backend" skills={backendSkills} />

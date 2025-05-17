@@ -14,17 +14,16 @@ type EducationItem = {
 const Education = () => {
   const educationItems: EducationItem[] = [
     {
-      period: "2015 - 2019",
-      degree: "Bachelor of Technology",
-      institution: "Tech University",
-      location: "Mumbai, India",
-      description: "Computer Science and Engineering"
+      period: "2019 - 2022",
+      degree: "Bachelor of Computer Science",
+      institution: "Mankar College, The University of Burdwan",
+      location: "Mankar, India"
     },
     {
-      period: "2012 - 2014",
-      degree: "Associate Degree",
-      institution: "Community College",
-      location: "Delhi, India"
+      period: "2023 - 2025",
+      degree: "Master of Computer Applications",
+      institution: "Dr B C Roy Engineering College, MAKAUT",
+      location: "Durgapur, India"
     }
   ];
 
@@ -39,8 +38,8 @@ const Education = () => {
             </div>
             <div>
               {educationItems.map((item, index) => (
-                <div 
-                  key={index} 
+                <div
+                  key={index}
                   className="mb-6 relative pl-6 before:absolute before:left-0 before:top-1.5 before:w-2 before:h-2 before:rounded-full before:bg-gray-400 dark:before:bg-gray-500 last:mb-0"
                 >
                   <div className="text-xs text-gray-500 dark:text-gray-400 mb-1">{item.period}</div>

@@ -13,15 +13,15 @@ type Publication = {
 const Publications = () => {
   const publications: Publication[] = [
     {
-      title: "Building Scalable Web Applications with React",
-      journal: "Journal of Web Development",
-      date: "March 2024",
+      title: "Emosense: A Human Stress Detection approach using Machine Learning",
+      journal: "Research Paper Accepted",
+      date: "March 2025",
       link: "https://example.com/publication1"
     },
     {
-      title: "Modern Frontend Architecture Patterns",
-      journal: "Tech Insights Magazine",
-      date: "January 2024",
+      title: "Cavi-Scan: An Automated Cavity Detection using Machine Learning",
+      journal: "Research Paper Submitted",
+      date: "May 2025",
       link: "https://example.com/publication2"
     }
   ];
@@ -39,9 +39,9 @@ const Publications = () => {
               {publications.map((publication, index) => (
                 <div key={index} className="pl-6 border-l-2 border-gray-200 dark:border-gray-700">
                   <div className="text-xs text-gray-500 dark:text-gray-400 mb-1">{publication.date}</div>
-                  <a 
-                    href={publication.link} 
-                    target="_blank" 
+                  <a
+                    href={publication.link}
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="font-medium text-portfolio-primary dark:text-blue-400 hover:underline"
                   >

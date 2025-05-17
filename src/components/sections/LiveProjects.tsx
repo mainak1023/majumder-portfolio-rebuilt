@@ -15,17 +15,18 @@ type LiveProject = {
 const LiveProjects = () => {
   const projects: LiveProject[] = [
     {
-      name: "Portfolio Website",
-      description: "Personal portfolio website built with React and Tailwind CSS.",
-      technologies: ["React", "TypeScript", "Tailwind CSS"],
-      liveUrl: "https://mainakmajumder.live",
-      repoUrl: "https://github.com/mainakmajumder/portfolio"
+      name: "Website for Ramkrishna Ashram Vidyapitha, Panagarh",
+      description: "A website for Ramkrishna Ashram Vidyapitha, Panagarh, showcasing the school's information and activities.",
+      technologies: ["React", "TypeScript", "Tailwind CSS", "Django"],
+      liveUrl: "https://rkavpanagarh.in",
+      repoUrl: "#"
     },
     {
-      name: "Task Management App",
-      description: "A task management application with features like drag-and-drop, filtering, and sorting.",
-      technologies: ["React", "Redux", "TypeScript"],
-      liveUrl: "https://tasks.example.com"
+      name: "Website for Dept. Of Computer Science, Mankar College",
+      description: "A website for the Department of Computer Science at Mankar College, providing information about the department.",
+      technologies: ["HTML", "Tailwind", "Django"],
+      liveUrl: "https://computersciencemancoll.in/",
+      repoUrl: "#"
     }
   ];
 
@@ -43,30 +44,30 @@ const LiveProjects = () => {
                 <div key={index} className="border-b border-gray-200 dark:border-gray-700 pb-6 last:border-0 last:pb-0">
                   <h3 className="font-medium mb-2 dark:text-white">{project.name}</h3>
                   <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">{project.description}</p>
-                  
+
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.technologies.map((tech, techIndex) => (
-                      <span 
-                        key={techIndex} 
+                      <span
+                        key={techIndex}
                         className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-xs rounded-md dark:text-gray-300"
                       >
                         {tech}
                       </span>
                     ))}
                   </div>
-                  
+
                   <div className="flex flex-wrap gap-3">
-                    <Button 
-                      size="sm" 
+                    <Button
+                      size="sm"
                       className="bg-portfolio-primary hover:bg-portfolio-primary/90 dark:bg-blue-600 dark:hover:bg-blue-700"
                       onClick={() => window.open(project.liveUrl, '_blank')}
                     >
                       Live Demo
                     </Button>
-                    
+
                     {project.repoUrl && (
-                      <Button 
-                        size="sm" 
+                      <Button
+                        size="sm"
                         variant="outline"
                         className="dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-700"
                         onClick={() => window.open(project.repoUrl, '_blank')}

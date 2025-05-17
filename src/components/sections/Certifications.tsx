@@ -14,18 +14,25 @@ type Certification = {
 const Certifications = () => {
   const certifications: Certification[] = [
     {
-      period: "March 2024",
-      title: "AWS Certified Solutions Architect",
-      issuer: "Amazon Web Services",
-      description: "Professional certification in cloud architecture",
-      url: "https://aws.amazon.com/certification/"
+      period: "May 2025",
+      title: "Privacy and Security in Online Social Media",
+      issuer: "National Programme on Technology Enhanced Learning",
+      description: "Certification in privacy and security practices in online social media",
+      url: "https://drive.google.com/file/d/18LNaxtNb_S9-qT6plDmuOdkyDoNYvkJw/view"
     },
     {
-      period: "November 2023",
-      title: "Professional Scrum Master I",
-      issuer: "Scrum.org",
-      description: "Certification in Scrum frameworks and methodologies",
-      url: "https://www.scrum.org/professional-scrum-certifications"
+      period: "March 2025",
+      title: "Simple React App from Scratch",
+      issuer: "UDEMY",
+      description: "Certification in building a simple React application from scratch",
+      url: "https://www.udemy.com/certificate/UC-bfbe9d26-3717-4841-b689-ed0f0357cf8d/"
+    },
+    {
+      period: "January 2025",
+      title: "Professional Diploma in Project Management",
+      issuer: "UDEMY",
+      description: "Certification in project management principles and practices",
+      url: "https://drive.google.com/file/d/1miAUYJpPK4TKx6HevAhGlil7uJ_KUUx5/view?usp=sharing"
     }
   ];
 
@@ -40,16 +47,16 @@ const Certifications = () => {
             </div>
             <div>
               {certifications.map((cert, index) => (
-                <div 
-                  key={index} 
+                <div
+                  key={index}
                   className="mb-6 relative pl-6 before:absolute before:left-0 before:top-1.5 before:w-2 before:h-2 before:rounded-full before:bg-gray-400 dark:before:bg-gray-500 last:mb-0"
                 >
                   <div className="text-xs text-gray-500 dark:text-gray-400 mb-1">{cert.period}</div>
                   <div className="font-medium dark:text-white">
                     {cert.url ? (
-                      <a 
-                        href={cert.url} 
-                        target="_blank" 
+                      <a
+                        href={cert.url}
+                        target="_blank"
                         rel="noopener noreferrer"
                         className="text-portfolio-primary dark:text-blue-400 hover:underline"
                       >
