@@ -24,8 +24,22 @@ const LiveProjects = () => {
     {
       name: "Website for Dept. Of Computer Science, Mankar College",
       description: "A website for the Department of Computer Science at Mankar College, providing information about the department.",
-      technologies: ["HTML", "Tailwind", "Django"],
+      technologies: ["React", "Tailwind", "Django"],
       liveUrl: "https://computersciencemancoll.in/",
+      repoUrl: "#"
+    },
+    {
+      name: "Website for A Physiotherapy Center, Benachity",
+      description: "A website for A Physiotherapy Center, Benachity, providing information about the center's services and facilities.",
+      technologies: ["React", "Tailwind", "Django"],
+      liveUrl: "https://appliedphysio.in/",
+      repoUrl: "#"
+    },
+    {
+      name: "Qubit AI Chatbot",
+      description: "Built an intelligent chatbot using React.js for code-related assistance. Integrated Gemini 2.0 Flash model for developer-friendly prompt responses.",
+      technologies: ["React", "Tailwind", "google-ai-studio"],
+      liveUrl: "https://qubit-ai.mainakmajumder.live/",
       repoUrl: "#"
     }
   ];

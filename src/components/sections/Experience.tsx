@@ -22,14 +22,14 @@ const ExperienceCard = ({ item }: { item: ExperienceItem }) => {
 const Experience = () => {
   const experiences: ExperienceItem[] = [
     {
-      period: "September 2023 - Present",
-      position: "Senior Software Engineer",
-      company: "Tech Innovations Inc."
+      period: "September 2023 - September 2024",
+      position: "Computer Instructor",
+      company: "Computer Infotech"
     },
     {
-      period: "July 2019 - August 2023",
-      position: "Full-Stack Developer",
-      company: "Digital Solutions Ltd."
+      period: "March 2025 - Current",
+      position: "Full-Stack Web Developer",
+      company: "Freelance"
     }
   ];
 
