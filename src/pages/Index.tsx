@@ -9,6 +9,7 @@ import ThemeSelector from '../components/layout/ThemeSelector';
 import Publications from '../components/sections/Publications';
 import LiveProjects from '../components/sections/LiveProjects';
 import Education from '../components/sections/Education';
+import Resume from '../components/sections/Resume';
 import Certifications from '../components/sections/Certifications';
 
 const Index = () => {
@@ -22,12 +23,13 @@ const Index = () => {
             <TechStack />
             <Experience />
             <Education />
+            <Resume />
           </div>
           <div className="md:col-span-2 space-y-6">
             <Publications />
             <LiveProjects />
             <Certifications />
-            {/* <Projects /> */}
+            <Projects />
           </div>
         </div>
       </div>
