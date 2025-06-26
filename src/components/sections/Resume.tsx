@@ -23,7 +23,7 @@ const Resume = () => {
                 className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600"
               >
                 <a 
-                  href="/path-to-your-resume.pdf" 
+                  href="/Resume/mainak_resume.pdf" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="inline-flex items-center"
