@@ -37,4 +37,4 @@ npm run dev
 
 ## Contact
 
-If you'd like to connect or collaborate, reach me at [mainak.official.work@gmail.com](mailto:mainak.official.work@gmail.com)
+If you'd like to connect or collaborate, reach me at [mainak.official.work@gmail.com](mailto:mainak1112@gmail.com)
