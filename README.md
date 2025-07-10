@@ -8,7 +8,7 @@ A modern, responsive portfolio built with React and Tailwind CSS to showcase my 
 
 ## Preview
 
-![Website Preview](./preview.png)
+![Website Preview](/public/preview.png)
 
 ## Tech Stack
 
