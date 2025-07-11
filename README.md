@@ -16,7 +16,7 @@ A modern, responsive portfolio built with React and Tailwind CSS to showcase my 
 * Tailwind CSS
 * Vite
 * Git & GitHub
-* Deployed via Netlify/Vercel
+* Deployed via Netlify
 
 ## Features
 
@@ -29,10 +29,10 @@ A modern, responsive portfolio built with React and Tailwind CSS to showcase my 
 To run locally:
 
 ```bash
-git clone [https://github.com/your-username/portfolio.git](https://github.com/mainak1023/majumder-portfolio-rebuilt)
+git clone https://github.com/mainak1023/majumder-portfolio-rebuilt
 cd majumder-portfolio-rebuilt
-npm install
-npm run dev
+bun install
+bun run dev
 ```
 
 ## Contact
