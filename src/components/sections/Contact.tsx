@@ -41,82 +41,90 @@ const Contact = () => {
   };
   
   return (
-    <div className="bg-card rounded-lg p-6 border shadow-sm">
-      <div className="flex items-center gap-2 mb-6">
-        <Send className="h-5 w-5 text-primary" />
-        <h2 className="text-xl font-semibold text-foreground">Get In Touch</h2>
+    <section id="contact" className="py-20 bg-white">
+      <div className="container mx-auto">
+        <h2 className="text-3xl font-bold text-center mb-16 text-portfolio-secondary">Get In Touch</h2>
+        
+        <div className="max-w-2xl mx-auto">
+          <div className="bg-portfolio-background rounded-lg p-8 shadow-card">
+            <div className="flex items-center gap-2 mb-6">
+              <Send className="h-5 w-5 text-portfolio-primary" />
+              <h3 className="text-xl font-semibold text-portfolio-secondary">Send me a message</h3>
+            </div>
+            
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <label htmlFor="name" className="text-sm font-medium text-portfolio-secondary">
+                    Name
+                  </label>
+                  <Input
+                    id="name"
+                    name="name"
+                    placeholder="Your name"
+                    required
+                    disabled={isSubmitting}
+                    className="w-full border-gray-300 focus:border-portfolio-primary focus:ring-portfolio-primary"
+                  />
+                </div>
+                
+                <div className="space-y-2">
+                  <label htmlFor="email" className="text-sm font-medium text-portfolio-secondary">
+                    Email
+                  </label>
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="Your email address"
+                    required
+                    disabled={isSubmitting}
+                    className="w-full border-gray-300 focus:border-portfolio-primary focus:ring-portfolio-primary"
+                  />
+                </div>
+              </div>
+              
+              <div className="space-y-2">
+                <label htmlFor="subject" className="text-sm font-medium text-portfolio-secondary">
+                  Subject
+                </label>
+                <Input
+                  id="subject"
+                  name="subject"
+                  placeholder="Subject of your message"
+                  required
+                  disabled={isSubmitting}
+                  className="w-full border-gray-300 focus:border-portfolio-primary focus:ring-portfolio-primary"
+                />
+              </div>
+              
+              <div className="space-y-2">
+                <label htmlFor="message" className="text-sm font-medium text-portfolio-secondary">
+                  Message
+                </label>
+                <Textarea
+                  id="message"
+                  name="message"
+                  placeholder="Write your message here..."
+                  required
+                  disabled={isSubmitting}
+                  className="min-h-[120px] w-full resize-none border-gray-300 focus:border-portfolio-primary focus:ring-portfolio-primary"
+                />
+              </div>
+              
+              <Button 
+                type="submit" 
+                className="w-full bg-portfolio-primary hover:bg-portfolio-primary/90 text-white" 
+                disabled={isSubmitting}
+              >
+                <Send className="h-4 w-4 mr-2" />
+                {isSubmitting ? "Sending..." : "Send Message"}
+              </Button>
+            </form>
+          </div>
+        </div>
       </div>
-      
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="space-y-2">
-            <label htmlFor="name" className="text-sm font-medium text-foreground">
-              Name
-            </label>
-            <Input
-              id="name"
-              name="name"
-              placeholder="Your name"
-              required
-              disabled={isSubmitting}
-              className="w-full"
-            />
-          </div>
-          
-          <div className="space-y-2">
-            <label htmlFor="email" className="text-sm font-medium text-foreground">
-              Email
-            </label>
-            <Input
-              id="email"
-              name="email"
-              type="email"
-              placeholder="Your email address"
-              required
-              disabled={isSubmitting}
-              className="w-full"
-            />
-          </div>
-        </div>
-        
-        <div className="space-y-2">
-          <label htmlFor="subject" className="text-sm font-medium text-foreground">
-            Subject
-          </label>
-          <Input
-            id="subject"
-            name="subject"
-            placeholder="Subject of your message"
-            required
-            disabled={isSubmitting}
-            className="w-full"
-          />
-        </div>
-        
-        <div className="space-y-2">
-          <label htmlFor="message" className="text-sm font-medium text-foreground">
-            Message
-          </label>
-          <Textarea
-            id="message"
-            name="message"
-            placeholder="Write your message here..."
-            required
-            disabled={isSubmitting}
-            className="min-h-[120px] w-full resize-none"
-          />
-        </div>
-        
-        <Button 
-          type="submit" 
-          className="w-full" 
-          disabled={isSubmitting}
-        >
-          <Send className="h-4 w-4 mr-2" />
-          {isSubmitting ? "Sending..." : "Send Message"}
-        </Button>
-      </form>
-    </div>
+    </section>
   );
 };
 
