@@ -11,6 +11,7 @@ import LiveProjects from '../components/sections/LiveProjects';
 import Education from '../components/sections/Education';
 import Resume from '../components/sections/Resume';
 import Certifications from '../components/sections/Certifications';
+import Contact from '../components/sections/Contact';
 
 const Index = () => {
   return (
@@ -30,6 +31,7 @@ const Index = () => {
             <LiveProjects />
             <Certifications />
             {/* <Projects /> */}
+            <Contact />
           </div>
         </div>
       </div>
