@@ -24,6 +24,9 @@ const Contact = () => {
         title: "Message sent successfully!",
         description: "Thanks for reaching out. I'll get back to you soon.",
       });
+      // Reset form
+      const form = document.getElementById('contact-form') as HTMLFormElement;
+      if (form) form.reset();
     },
     onError: (msg, data) => {
       setIsSubmitting(false);
@@ -35,10 +38,30 @@ const Contact = () => {
     },
   });
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    await submit(e);
+    
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      access_key: "c2b1d25b-4384-4969-bbbc-44ba3eed6449",
+      name: formData.get('name'),
+      email: formData.get('email'),
+      subject: formData.get('subject'),
+      message: formData.get('message'),
+    };
+
+    try {
+      await submit(data);
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setIsSubmitting(false);
+      toast({
+        title: "Error sending message",
+        description: "Please try again later.",
+        variant: "destructive",
+      });
+    }
   };
   
   return (
@@ -51,7 +74,7 @@ const Contact = () => {
               <h2 className="text-lg font-medium dark:text-white">Get In Touch</h2>
             </div>
             
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form id="contact-form" onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-sm font-medium text-gray-600 dark:text-gray-300">
