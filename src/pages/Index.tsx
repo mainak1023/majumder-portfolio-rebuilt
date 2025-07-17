@@ -10,6 +10,7 @@ import Publications from '../components/sections/Publications';
 import LiveProjects from '../components/sections/LiveProjects';
 import Education from '../components/sections/Education';
 import Resume from '../components/sections/Resume';
+import AdSection from '../components/sections/AdSection';
 import Certifications from '../components/sections/Certifications';
 import Contact from '../components/sections/Contact';
 
@@ -25,6 +26,7 @@ const Index = () => {
             <Experience />
             <Education />
             <Resume />
+            <AdSection />
           </div>
           <div className="md:col-span-2 space-y-6">
             <Publications />
