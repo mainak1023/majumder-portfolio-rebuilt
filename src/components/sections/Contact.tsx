@@ -1,4 +1,3 @@
-
 import React, { useState, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -14,20 +13,20 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
   const recaptchaRef = useRef<ReCAPTCHA>(null);
-  
+
   const { submit } = useWeb3Forms({
     access_key: "c2b1d25b-4384-4969-bbbc-44ba3eed6449",
     settings: {
       from_name: "Portfolio Contact Form",
       subject: "New Contact Form Submission",
     },
+    requireCaptcha: true,
     onSuccess: (msg, data) => {
       setIsSubmitting(false);
       toast({
         title: "Message sent successfully!",
         description: "Thanks for reaching out. I'll get back to you soon.",
       });
-      // Reset form and reCAPTCHA
       const form = document.getElementById('contact-form') as HTMLFormElement;
       if (form) form.reset();
       setRecaptchaToken(null);
@@ -47,7 +46,7 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
+
     if (!recaptchaToken) {
       toast({
         title: "Please complete the reCAPTCHA",
@@ -56,18 +55,19 @@ const Contact = () => {
       });
       return;
     }
-    
+
     setIsSubmitting(true);
-    
+
     const formData = new FormData(e.currentTarget);
     const data = {
-      access_key: "c2b1d25b-4384-4969-bbbc-44ba3eed6449",
       name: formData.get('name'),
       email: formData.get('email'),
       subject: formData.get('subject'),
       message: formData.get('message'),
       'g-recaptcha-response': recaptchaToken,
     };
+
+    console.log("Submitting:", data); // Debugging
 
     try {
       await submit(data);
@@ -81,7 +81,7 @@ const Contact = () => {
       });
     }
   };
-  
+
   return (
     <section id="contact" className="py-10 bg-white dark:bg-gray-900">
       <div className="container mx-auto px-4">
@@ -91,7 +91,7 @@ const Contact = () => {
               <Send className="mr-2 text-portfolio-primary dark:text-blue-400" size={20} />
               <h2 className="text-lg font-medium dark:text-white">Get In Touch</h2>
             </div>
-            
+
             <form id="contact-form" onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
@@ -107,7 +107,7 @@ const Contact = () => {
                     className="w-full"
                   />
                 </div>
-                
+
                 <div className="space-y-2">
                   <label htmlFor="email" className="text-sm font-medium text-gray-600 dark:text-gray-300">
                     Email
@@ -123,7 +123,7 @@ const Contact = () => {
                   />
                 </div>
               </div>
-              
+
               <div className="space-y-2">
                 <label htmlFor="subject" className="text-sm font-medium text-gray-600 dark:text-gray-300">
                   Subject
@@ -137,7 +137,7 @@ const Contact = () => {
                   className="w-full"
                 />
               </div>
-              
+
               <div className="space-y-2">
                 <label htmlFor="message" className="text-sm font-medium text-gray-600 dark:text-gray-300">
                   Message
@@ -151,7 +151,7 @@ const Contact = () => {
                   className="min-h-[120px] w-full resize-none"
                 />
               </div>
-              
+
               <div className="flex justify-center">
                 <ReCAPTCHA
                   ref={recaptchaRef}
@@ -160,10 +160,10 @@ const Contact = () => {
                   theme="light"
                 />
               </div>
-              
-              <Button 
-                type="submit" 
-                className="w-full bg-portfolio-primary hover:bg-portfolio-primary/90 dark:bg-blue-400 dark:hover:bg-blue-500 text-white" 
+
+              <Button
+                type="submit"
+                className="w-full bg-portfolio-primary hover:bg-portfolio-primary/90 dark:bg-blue-400 dark:hover:bg-blue-500 text-white"
                 disabled={isSubmitting || !recaptchaToken}
               >
                 <Send className="h-4 w-4 mr-2" />
