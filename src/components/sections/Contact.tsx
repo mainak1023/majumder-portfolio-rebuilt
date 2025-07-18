@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -7,10 +7,13 @@ import { Card, CardContent } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
 import useWeb3Forms from '@web3forms/react';
 import { Send } from 'lucide-react';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 const Contact = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
   
   const { submit } = useWeb3Forms({
     access_key: "c2b1d25b-4384-4969-bbbc-44ba3eed6449",
@@ -24,9 +27,13 @@ const Contact = () => {
         title: "Message sent successfully!",
         description: "Thanks for reaching out. I'll get back to you soon.",
       });
-      // Reset form
+      // Reset form and reCAPTCHA
       const form = document.getElementById('contact-form') as HTMLFormElement;
       if (form) form.reset();
+      setRecaptchaToken(null);
+      if (recaptchaRef.current) {
+        recaptchaRef.current.reset();
+      }
     },
     onError: (msg, data) => {
       setIsSubmitting(false);
@@ -40,6 +47,16 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    
+    if (!recaptchaToken) {
+      toast({
+        title: "Please complete the reCAPTCHA",
+        description: "reCAPTCHA verification is required to send the message.",
+        variant: "destructive",
+      });
+      return;
+    }
+    
     setIsSubmitting(true);
     
     const formData = new FormData(e.currentTarget);
@@ -49,6 +66,7 @@ const Contact = () => {
       email: formData.get('email'),
       subject: formData.get('subject'),
       message: formData.get('message'),
+      'g-recaptcha-response': recaptchaToken,
     };
 
     try {
@@ -134,10 +152,19 @@ const Contact = () => {
                 />
               </div>
               
+              <div className="flex justify-center">
+                <ReCAPTCHA
+                  ref={recaptchaRef}
+                  sitekey="6LfqdIcrAAAAAMfd1KjPz1_wD1f0cz3EA3_1VxVn"
+                  onChange={(token) => setRecaptchaToken(token)}
+                  theme="light"
+                />
+              </div>
+              
               <Button 
                 type="submit" 
                 className="w-full bg-portfolio-primary hover:bg-portfolio-primary/90 dark:bg-blue-400 dark:hover:bg-blue-500 text-white" 
-                disabled={isSubmitting}
+                disabled={isSubmitting || !recaptchaToken}
               >
                 <Send className="h-4 w-4 mr-2" />
                 {isSubmitting ? "Sending..." : "Send Message"}
