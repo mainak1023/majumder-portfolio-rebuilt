@@ -14,9 +14,9 @@ const Publications = () => {
   const publications: Publication[] = [
     {
       title: "Emosense: A Human Stress Detection approach using Machine Learning",
-      journal: "Research Paper Accepted",
-      date: "March 2025",
-      link: "https://example.com/publication1"
+      journal: "Research Paper Presented at ISCCA 2025, BBIT, India",
+      date: "August 2025",
+      link: "https://drive.google.com/file/d/1zm1aPJ6FrEvGYS_qJX7ca34jWJbAh_Eg/view?usp=sharing"
     },
     {
       title: "Cavi-Scan: An Automated Cavity Detection using Machine Learning",
