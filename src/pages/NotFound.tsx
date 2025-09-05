@@ -1,5 +1,6 @@
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import ScrollToTop from "../components/ui/scroll-to-top";
 
 const NotFound = () => {
   const location = useLocation();
@@ -20,6 +21,7 @@ const NotFound = () => {
           Return to Home
         </a>
       </div>
+      <ScrollToTop />
     </div>
   );
 };

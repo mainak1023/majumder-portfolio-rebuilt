@@ -13,6 +13,7 @@ import AdSection from '../components/sections/AdSection';
 import Certifications from '../components/sections/Certifications';
 import Contact from '../components/sections/Contact';
 import PageLoader from '../components/ui/page-loader';
+import ScrollToTop from '../components/ui/scroll-to-top';
 
 const Index = () => {
   return (
@@ -39,6 +40,7 @@ const Index = () => {
         </div>
       </div>
       <Footer />
+      <ScrollToTop />
     </div>
     </Suspense>
   );

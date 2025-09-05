@@ -8,6 +8,7 @@ import LiveProjects from '../components/sections/LiveProjects';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import PageLoader from '../components/ui/page-loader';
+import ScrollToTop from '../components/ui/scroll-to-top';
 
 const ProjectsPage = () => {
   return (
@@ -45,6 +46,7 @@ const ProjectsPage = () => {
         </div>
       </div>
       <Footer />
+      <ScrollToTop />
     </div>
     </Suspense>
   );
