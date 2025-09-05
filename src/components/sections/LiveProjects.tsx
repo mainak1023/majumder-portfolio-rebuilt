@@ -12,7 +12,11 @@ type LiveProject = {
   repoUrl?: string;
 };
 
-const LiveProjects = () => {
+interface LiveProjectsProps {
+  showAll?: boolean;
+}
+
+const LiveProjects = ({ showAll = false }: LiveProjectsProps) => {
   const projects: LiveProject[] = [
     {
       name: "Website for Ramkrishna Ashram Vidyapitha, Panagarh",
@@ -44,6 +48,8 @@ const LiveProjects = () => {
     }
   ];
 
+  const displayedProjects = showAll ? projects : projects.slice(0, 4);
+
   return (
     <section id="live-projects" className="py-10 bg-white dark:bg-gray-900">
       <div className="container mx-auto px-4">
@@ -54,7 +60,7 @@ const LiveProjects = () => {
               <h2 className="text-lg font-medium dark:text-white">Live Projects</h2>
             </div>
             <div className="space-y-8">
-              {projects.map((project, index) => (
+              {displayedProjects.map((project, index) => (
                 <div key={index} className="border-b border-gray-200 dark:border-gray-700 pb-6 last:border-0 last:pb-0">
                   <h3 className="font-medium mb-2 dark:text-white">{project.name}</h3>
                   <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">{project.description}</p>
@@ -93,6 +99,18 @@ const LiveProjects = () => {
                 </div>
               ))}
             </div>
+            
+            {!showAll && (
+              <div className="mt-6 text-center">
+                <Button
+                  variant="outline"
+                  onClick={() => window.location.href = '/projects'}
+                  className="w-full sm:w-auto"
+                >
+                  Show More Projects
+                </Button>
+              </div>
+            )}
           </CardContent>
         </Card>
       </div>
