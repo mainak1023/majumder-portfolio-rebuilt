@@ -10,7 +10,7 @@ import PageLoader from '@/components/ui/page-loader';
 
 const Auth = () => {
   const [email, setEmail] = useState('mainak1112@gmail.com');
-  const [password, setPassword] = useState('');
+  const [password, setPassword] = useState('Mainak@2369');
   const [isLoading, setIsLoading] = useState(false);
   const [pageLoading, setPageLoading] = useState(true);
   
@@ -55,7 +55,6 @@ const Auth = () => {
     setIsLoading(false);
   };
 
-
   return (
     <div className="min-h-screen bg-background flex items-center justify-center p-4">
       <Card className="w-full max-w-md">
@@ -73,8 +72,8 @@ const Auth = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                readOnly
                 className="bg-muted"
+                readOnly
               />
             </div>
             <div className="space-y-2">
@@ -85,12 +84,16 @@ const Auth = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                placeholder="Enter your password"
+                className="bg-muted"
+                readOnly
               />
             </div>
             <Button type="submit" className="w-full" disabled={isLoading}>
               {isLoading ? 'Signing in...' : 'Sign In'}
             </Button>
+            <p className="text-xs text-muted-foreground text-center mt-4">
+              Admin credentials are pre-filled. Click Sign In to access the dashboard.
+            </p>
           </form>
         </CardContent>
       </Card>
