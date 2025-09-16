@@ -14,35 +14,35 @@ const TempSignup = () => {
 
   const createAdminUser = async () => {
     setIsLoading(true);
-    
+
     try {
-      const { error } = await supabase.auth.signUp({
-        email: 'mainak1112@gmail.com',
-        password: 'Mainak@2369',
-        options: {
-          data: {
-            full_name: 'Mainak'
-          }
-        }
+      const { data, error } = await supabase.functions.invoke('bootstrap-admin', {
+        body: {
+          email: 'mainak1112@gmail.com',
+          password: 'Mainak@2369',
+          full_name: 'Mainak',
+        },
       });
-      
-      if (error) {
+
+      if (error || (data && data.ok === false)) {
+        const message = error?.message || data?.error || 'Failed to create admin user';
         toast({
           title: 'Error',
-          description: error.message,
+          description: message,
           variant: 'destructive',
         });
-      } else {
-        setCreated(true);
-        toast({
-          title: 'Success',
-          description: 'Admin user created successfully! You can now sign in.',
-        });
+        return;
       }
-    } catch (error) {
+
+      setCreated(true);
+      toast({
+        title: 'Success',
+        description: 'Admin user ready! You can now sign in.',
+      });
+    } catch (error: any) {
       toast({
         title: 'Error',
-        description: 'Failed to create user',
+        description: error?.message || 'Failed to create user',
         variant: 'destructive',
       });
     } finally {
