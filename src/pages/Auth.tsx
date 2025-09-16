@@ -7,8 +7,9 @@ import { Label } from '@/components/ui/label';
 import { useAuth } from '@/hooks/useAuth';
 import { useToast } from '@/hooks/use-toast';
 import PageLoader from '@/components/ui/page-loader';
-
-const Auth = () => {
+import { supabase } from '@/integrations/supabase/client';
+ 
+ const Auth = () => {
   const [email, setEmail] = useState('mainak1112@gmail.com');
   const [password, setPassword] = useState('Mainak@2369');
   const [isLoading, setIsLoading] = useState(false);
@@ -37,13 +38,43 @@ const Auth = () => {
   const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    
-    const { error } = await signIn(email, password);
-    
+
+    const attempt = async () => {
+      const { error } = await signIn(email, password);
+      return error as any;
+    };
+
+    let error = await attempt();
+
+    if (error) {
+      const msg = (error?.message || '').toLowerCase();
+      const looksLikeMissingUser =
+        msg.includes('invalid login') ||
+        msg.includes('invalid_grant') ||
+        msg.includes('user') ||
+        msg.includes('not found');
+
+      if (looksLikeMissingUser) {
+        try {
+          const { data, error: fnError } = await supabase.functions.invoke('bootstrap-admin', {
+            body: { email, password, full_name: 'Mainak' },
+          });
+
+          if (!fnError && data?.ok) {
+            error = await attempt();
+          } else {
+            error = fnError || new Error(data?.error || 'Failed to create admin user');
+          }
+        } catch (err: any) {
+          error = err;
+        }
+      }
+    }
+
     if (error) {
       toast({
         title: 'Error',
-        description: error.message,
+        description: error.message || 'Sign in failed',
         variant: 'destructive',
       });
     } else {
