@@ -11,6 +11,8 @@ import ProjectsPage from "./pages/Projects";
 import Auth from "./pages/Auth";
 import Admin from "./pages/Admin";
 import BlogPost from "./pages/BlogPost";
+import Blog from "./pages/Blog";
+import SingleBlog from "./pages/SingleBlog";
 import NotFound from "./pages/NotFound";
 import TempSignup from "./pages/TempSignup";
 
@@ -29,6 +31,8 @@ const App = () => (
               <Route path="/projects" element={<ProjectsPage />} />
               <Route path="/auth" element={<Auth />} />
               <Route path="/admin" element={<Admin />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:id" element={<SingleBlog />} />
               <Route path="/blog/:slug" element={<BlogPost />} />
               <Route path="/setup" element={<TempSignup />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
