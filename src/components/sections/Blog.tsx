@@ -2,7 +2,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Calendar, ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 // Temporary static blog data for homepage preview
 const blogs = [
@@ -46,7 +46,7 @@ const Blog = () => {
                 )}
               </CardHeader>
               <CardContent className="mt-auto">
-                <Link to={`/blog/${blog.id}`}>
+                <Link href={`/blog/${blog.id}`}>
                   <Button variant="outline" className="w-full group">
                     Read More
                     <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -58,7 +58,7 @@ const Blog = () => {
         </div>
 
         <div className="text-center">
-          <Link to="/blog">
+          <Link href="/blog">
             <Button variant="default" size="lg" className="px-8">
               View All Posts
             </Button>

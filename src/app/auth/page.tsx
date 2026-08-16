@@ -1,5 +1,6 @@
+"use client";
 import { useState, useEffect } from 'react';
-import { Navigate } from 'react-router-dom';
+import { redirect } from 'next/navigation';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -32,7 +33,7 @@ import { supabase } from '@/integrations/supabase/client';
   }
 
   if (user) {
-    return <Navigate to="/admin" replace />;
+    redirect('/');
   }
 
   const handleSignIn = async (e: React.FormEvent) => {
@@ -133,3 +134,4 @@ import { supabase } from '@/integrations/supabase/client';
 };
 
 export default Auth;
+

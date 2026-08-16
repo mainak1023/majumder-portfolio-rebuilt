@@ -1,5 +1,6 @@
+"use client";
 import React, { Suspense } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import Footer from '../components/layout/Footer';
 import ThemeSelector from '../components/layout/ThemeSelector';
@@ -18,7 +19,7 @@ const ProjectsPage = () => {
         {/* Header */}
         <div className="mb-6">
           <div className="flex items-center justify-between mb-4">
-            <Link to="/">
+            <Link href="/">
               <Button variant="ghost" className="flex items-center">
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Back to Home
@@ -53,3 +54,4 @@ const ProjectsPage = () => {
 };
 
 export default ProjectsPage;
+

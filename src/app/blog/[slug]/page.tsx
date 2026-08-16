@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, Navigate } from 'react-router-dom';
+import { useParams, useRouter } from 'next/navigation';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -10,10 +10,12 @@ import Footer from '@/components/layout/Footer';
 import ScrollToTop from '@/components/ui/scroll-to-top';
 import PageLoader from '@/components/ui/page-loader';
 import { Calendar, Clock, ArrowLeft } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 const BlogPost = () => {
-  const { slug } = useParams<{ slug: string }>();
+  const params = useParams();
+  const slug = params?.slug as string;
+  const router = useRouter();
   const [blog, setBlog] = useState<Blog | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [pageLoading, setPageLoading] = useState(true);
@@ -69,11 +71,13 @@ const BlogPost = () => {
   }
 
   if (notFound) {
-    return <Navigate to="/404" replace />;
+    router.push('/404');
+    return null;
   }
 
   if (!blog) {
-    return <Navigate to="/404" replace />;
+    router.push('/404');
+    return null;
   }
 
   return (
@@ -81,7 +85,7 @@ const BlogPost = () => {
       <Header />
       <main className="container mx-auto px-4 py-8 max-w-4xl">
         <div className="mb-8">
-          <Link to="/#blog">
+          <Link href="/#blog">
             <Button variant="outline" className="mb-4">
               <ArrowLeft className="h-4 w-4 mr-2" />
               Back to Blog
@@ -133,7 +137,7 @@ const BlogPost = () => {
         </article>
 
         <div className="mt-12 pt-8 border-t">
-          <Link to="/#blog">
+          <Link href="/#blog">
             <Button>
               <ArrowLeft className="h-4 w-4 mr-2" />
               Back to Blog

@@ -1,3 +1,4 @@
+"use client";
 
 import { createContext, useContext, useEffect, useState } from "react";
 
@@ -29,21 +30,16 @@ export function ThemeProvider({
   storageKey = "vite-ui-theme",
   ...props
 }: ThemeProviderProps) {
-  const [theme, setTheme] = useState<Theme>(() => {
+  const [theme, setTheme] = useState<Theme>(defaultTheme);
+
+  useEffect(() => {
     const storedTheme = localStorage.getItem(storageKey);
     if (storedTheme === "light" || storedTheme === "dark") {
-      return storedTheme;
+      setTheme(storedTheme);
+    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      setTheme("dark");
     }
-
-    // Check for OS preference
-    if (typeof window !== "undefined") {
-      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-        return "dark";
-      }
-    }
-
-    return defaultTheme;
-  });
+  }, [storageKey]);
 
   useEffect(() => {
     const root = window.document.documentElement;

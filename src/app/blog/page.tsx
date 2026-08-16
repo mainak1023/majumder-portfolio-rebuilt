@@ -1,8 +1,9 @@
+"use client";
 
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Calendar, ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import Link from 'next/link';
 
 // Temporary static blog data
 const blogs = [
@@ -51,7 +52,7 @@ const Blog: React.FC = () => {
                                 </CardDescription>
                             </CardHeader>
                             <CardContent className="mt-auto">
-                                <Link to={`/blog/${blog.id}`}>
+                                <Link href={`/blog/${blog.id}`}>
                                     <Button variant="outline" className="w-full group">
                                         Read More
                                         <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -67,3 +68,4 @@ const Blog: React.FC = () => {
 };
 
 export default Blog;
+

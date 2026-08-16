@@ -1,5 +1,6 @@
+"use client";
 import { useState, useEffect } from 'react';
-import { Navigate } from 'react-router-dom';
+import { redirect } from 'next/navigation';
 import { useAuth } from '@/hooks/useAuth';
 import PageLoader from '@/components/ui/page-loader';
 import Header from '@/components/layout/Header';
@@ -19,12 +20,12 @@ const Admin = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  if (loading || pageLoading) {
-    return <PageLoader />;
+  if (!user || profile?.role !== 'admin') {
+    redirect('/');
   }
 
-  if (!user) {
-    return <Navigate to="/auth" replace />;
+  if (loading || pageLoading) {
+    return <PageLoader />;
   }
 
   return (
@@ -40,3 +41,4 @@ const Admin = () => {
 };
 
 export default Admin;
+

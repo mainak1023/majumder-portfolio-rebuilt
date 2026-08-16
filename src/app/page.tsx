@@ -1,3 +1,4 @@
+"use client";
 
 import React, { Suspense } from 'react';
 import Header from '../components/layout/Header';
@@ -50,3 +51,4 @@ const Index = () => {
 };
 
 export default Index;
+
