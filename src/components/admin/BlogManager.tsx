@@ -37,7 +37,7 @@ export function BlogManager() {
         .order('created_at', { ascending: false });
 
       if (error) throw error;
-      setBlogs(data || []);
+      setBlogs((data as any) || []);
     } catch (error: any) {
       toast({
         title: 'Error',

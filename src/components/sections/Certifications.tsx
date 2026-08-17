@@ -23,7 +23,7 @@ const Certifications = () => {
       if (error) throw error;
       setCertifications(data || []);
     } catch (error) {
-      console.error('Error fetching certifications:', error?.message || error);
+      console.error('Error fetching certifications:', (error as any)?.message || error);
     } finally {
       setIsLoading(false);
     }

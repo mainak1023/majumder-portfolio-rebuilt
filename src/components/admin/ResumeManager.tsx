@@ -35,7 +35,7 @@ export function ResumeManager() {
         .order('created_at', { ascending: false });
 
       if (error) throw error;
-      setResumes(data || []);
+      setResumes((data as any) || []);
     } catch (error: any) {
       toast({
         title: 'Error',

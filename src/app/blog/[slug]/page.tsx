@@ -1,10 +1,9 @@
+"use client";
+
 import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { supabase } from '@/integrations/supabase/client';
-import { Blog } from '@/types/database';
+import { blogsData } from '@/data/blogs';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import ScrollToTop from '@/components/ui/scroll-to-top';
@@ -16,7 +15,7 @@ const BlogPost = () => {
   const params = useParams();
   const slug = params?.slug as string;
   const router = useRouter();
-  const [blog, setBlog] = useState<Blog | null>(null);
+  const [blog, setBlog] = useState<any | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [pageLoading, setPageLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
@@ -35,35 +34,22 @@ const BlogPost = () => {
     }
   }, [slug, pageLoading]);
 
-  const fetchBlog = async () => {
+  const fetchBlog = () => {
     if (!slug) {
       setNotFound(true);
       setIsLoading(false);
       return;
     }
 
-    try {
-      const { data, error } = await supabase
-        .from('blogs')
-        .select('*')
-        .eq('slug', slug)
-        .eq('published', true)
-        .single();
-
-      if (error) {
-        if (error.code === 'PGRST116') {
-          setNotFound(true);
-        }
-        throw error;
-      }
-      
-      setBlog(data);
-    } catch (error) {
-      console.error('Error fetching blog:', error);
+    const foundBlog = blogsData.find((b) => b.slug === slug);
+    
+    if (foundBlog) {
+      setBlog(foundBlog);
+    } else {
       setNotFound(true);
-    } finally {
-      setIsLoading(false);
     }
+    
+    setIsLoading(false);
   };
 
   if (pageLoading || isLoading) {
@@ -128,7 +114,7 @@ const BlogPost = () => {
           </header>
 
           <div className="prose prose-lg max-w-none dark:prose-invert">
-            {blog.content.split('\n').map((paragraph, index) => (
+            {blog.content.split('\n').map((paragraph: string, index: number) => (
               <p key={index} className="mb-4 leading-relaxed">
                 {paragraph}
               </p>

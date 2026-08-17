@@ -38,7 +38,7 @@ export function PublicationManager() {
         .order('year', { ascending: false });
 
       if (error) throw error;
-      setPublications(data || []);
+      setPublications((data as any) || []);
     } catch (error: any) {
       toast({
         title: 'Error',

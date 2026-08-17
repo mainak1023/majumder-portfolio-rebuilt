@@ -7,10 +7,13 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import ScrollToTop from '@/components/ui/scroll-to-top';
 import { AdminDashboard } from '@/components/admin/AdminDashboard';
+import { supabase } from '@/integrations/supabase/client';
 
 const Admin = () => {
   const { user, loading } = useAuth();
   const [pageLoading, setPageLoading] = useState(true);
+  const [profile, setProfile] = useState<{ role: string | null } | null>(null);
+  const [profileLoading, setProfileLoading] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -20,12 +23,23 @@ const Admin = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  if (!user || profile?.role !== 'admin') {
-    redirect('/');
+  useEffect(() => {
+    if (user) {
+      supabase.from('profiles').select('role').eq('id', user.id).single().then(({ data }) => {
+        setProfile(data);
+        setProfileLoading(false);
+      });
+    } else if (!loading) {
+      setProfileLoading(false);
+    }
+  }, [user, loading]);
+
+  if (loading || pageLoading || profileLoading) {
+    return <PageLoader />;
   }
 
-  if (loading || pageLoading) {
-    return <PageLoader />;
+  if (!user || profile?.role !== 'admin') {
+    redirect('/');
   }
 
   return (

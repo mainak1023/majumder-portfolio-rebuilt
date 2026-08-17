@@ -39,7 +39,7 @@ export function ProjectManager() {
         .order('created_at', { ascending: false });
 
       if (error) throw error;
-      setProjects(data || []);
+      setProjects((data as any) || []);
     } catch (error: any) {
       toast({
         title: 'Error',

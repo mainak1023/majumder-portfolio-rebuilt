@@ -2,14 +2,14 @@
 import React, { Suspense } from 'react';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
-import Footer from '../components/layout/Footer';
-import ThemeSelector from '../components/layout/ThemeSelector';
-import Projects from '../components/sections/Projects';
-import LiveProjects from '../components/sections/LiveProjects';
+import Footer from '@/components/layout/Footer';
+import ThemeSelector from '@/components/layout/ThemeSelector';
+import Projects from '@/components/sections/Projects';
+import LiveProjects from '@/components/sections/LiveProjects';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import PageLoader from '../components/ui/page-loader';
-import ScrollToTop from '../components/ui/scroll-to-top';
+import PageLoader from '@/components/ui/page-loader';
+import ScrollToTop from '@/components/ui/scroll-to-top';
 
 const ProjectsPage = () => {
   return (
