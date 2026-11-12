@@ -1,5 +1,78 @@
 export const blogsData = [
   {
+    id: 3,
+    title: "Why the Nifty 50 Took a Beating: What's Really Happening Behind the Red Screens",
+    slug: "nifty-50-market-crash-analysis",
+    summary: "A candid, grounded take on the recent market dip — why foreign money pulled out, why valuations had to cool off, and how to keep a level head as an everyday investor.",
+    excerpt: "If opening your portfolio app has felt painful lately, you aren't alone. Here's an honest breakdown of why Dalal Street is bleeding, what the big funds are doing, and how to navigate the dip without panicking.",
+    content: `If you have logged into Zerodha, Groww, or Angel One over the past few weeks, chances are your screen looked like a sea of red.
+
+For nearly two straight years, the Indian market felt almost invincible. Every dip was bought within hours, IPOs were getting subscribed fifty times over, and WhatsApp groups were full of people celebrating their monthly returns. But reality has a funny way of catching up with momentum.
+
+When the Nifty 50 started tumbling from its peak, taking mid-caps and small-caps down even harder, the mood flipped overnight. People who felt like market geniuses three months ago are suddenly wondering if they should pull everything out.
+
+So what actually went wrong? Let's skip the jargon and break down what really triggered this slide.
+
+---
+
+## 1. The FII Selloff: Big Money Walked Out the Door
+
+The biggest reason for the heavy bleeding is straightforward: Foreign Institutional Investors (FIIs) have been pressing the sell button day after day.
+
+Why? It's not because they suddenly lost faith in India's long-term story. It's about relative math:
+
+- **China became cheap again:** When Beijing announced massive stimulus measures, global funds looked at Chinese stocks trading at dirt-cheap multiples compared to Indian stocks trading at historic highs. They did what any hedge fund does — booked massive profits in India and parked that money where valuations were beaten down.
+- **The US Dollar got stronger:** With high US Treasury yields and geopolitical jitters, keeping dollars in safe, yield-bearing assets looked a lot more comfortable than holding expensive emerging market equities.
+
+When institutions dump thousands of crores day in and day out, domestic retail SIPs — as strong as they have been — simply can't soak up all that supply at once.
+
+---
+
+## 2. Valuations Were Priced for Absolute Perfection
+
+Let's be completely honest with ourselves: things were getting stretched.
+
+For months, companies trading at 60x, 80x, or even 100x Price-to-Earnings (P/E) were being justified by social media hype. When a stock is priced for perfection, everything has to go 100% right.
+
+The problem? Recent quarterly earnings were just... okay. 
+
+Several consumer goods companies reported sluggish urban demand. People aren't buying quite as much as the spreadsheets projected. Auto numbers slowed down. Once revenue growth came in at 8% or 10% instead of the expected 20%, institutional analysts immediately started downgrading targets. The correction wasn't irrational; the prices before it were.
+
+---
+
+## 3. The Pain Was Far Worse in Small and Mid Caps
+
+If you only held index funds, you took a decent hit. But if you held trendy small-cap defense, railway, or renewable stocks, your portfolio probably took a brutal punch.
+
+A lot of inexperienced investors piled into high-beta stocks with leverage, margin trading, and FOMO. When the tide turns, these high-flying names don't just drop 5% — they hit lower circuits. As retail traders got margin calls from their brokers, forced liquidations made the drop feel like an elevator falling down a shaft.
+
+---
+
+## What Should You Actually Do Right Now?
+
+Whenever the market bleeds, two extreme reactions take over: panic selling at the absolute bottom, or blindly "buying every dip" with money needed for rent next month. Neither is smart.
+
+Here is what makes sense from a practical, grounded perspective:
+
+1. **Stop staring at the ticker every ten minutes.** The market doesn't care if you refresh the chart forty times before lunch. It just adds unnecessary stress and leads to impulsive trades you'll regret in six months.
+2. **Review what you actually own.** Good businesses with solid cash flow, minimal debt, and real earnings will weather the storm and make new highs eventually. Speculative story-stocks with zero profits and insane valuations might never come back to their peak. Cut the junk, keep the quality.
+3. **Don't touch your SIPs.** The entire point of a Systematic Investment Plan is that you buy fewer units when prices are euphoric and more units when people are panicking. If you pause your SIP now, you completely defeat the purpose of rupee-cost averaging.
+4. **Keep an emergency fund sacred.** If a 10% or 15% drop makes you lose sleep because you might need that money next quarter, you had too much in equities to begin with. Asset allocation is about emotional survival as much as returns.
+
+---
+
+## The Bottom Line
+
+Every bull run has pullbacks. In 2020, 2022, and earlier cycles, the sentiment always felt like the end of the world while it was happening. 
+
+Corrections are painful while you live through them, but they are also what clears out the froth and sets the stage for the next healthy leg up. Stay calm, stick to your process, and let time do the heavy lifting.`,
+    date: "2026-11-12",
+    created_at: "2026-11-12T20:00:00Z",
+    author: "Mainak Majumder",
+    featured_image: null,
+    published: true
+  },
+  {
     id: 1,
     title: "Supabase.co Domain Ban in India: What Happened?",
     slug: "supabase-domain-ban-india",
