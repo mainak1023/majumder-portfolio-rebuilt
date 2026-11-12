@@ -26,7 +26,7 @@ const About = () => {
               and keeping up with the latest industry trends.
             </p>
 
-            <a href="/path-to-your-resume.pdf" target="_blank" rel="noopener noreferrer">
+            <a href="/Resume/mainak_resume.pdf" target="_blank" rel="noopener noreferrer">
               <Button className="bg-portfolio-primary hover:bg-portfolio-primary/90 mt-4">
                 <FileText size={18} className="mr-2" /> Download Resume
               </Button>
@@ -64,10 +64,10 @@ const About = () => {
               <div className="flex items-center">
                 <Mail size={20} className="text-portfolio-secondary" />
                 <a
-                  href="mailto:contact@mainakmajumder.live"
+                  href="mailto:mainak1112@gmail.com"
                   className="text-portfolio-primary ml-4 hover:underline"
                 >
-                  contact@mainakmajumder.live
+                  mainak1112@gmail.com
                 </a>
               </div>
             </div>

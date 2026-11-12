@@ -13,23 +13,17 @@ type Publication = {
 const Publications = () => {
   const publications: Publication[] = [
     {
-      title: "Emosense: A Human Stress Detection approach using Machine Learning",
-      journal: "Research Paper Presented at ISCCA 2025, BBIT, India",
-      date: "August 2025",
-      link: "https://drive.google.com/file/d/1zm1aPJ6FrEvGYS_qJX7ca34jWJbAh_Eg/view?usp=sharing"
-    },
-    {
-      title: "Cavi-Scan: An Automated Cavity Detection using Machine Learning",
-      journal: "Research Paper Submitted",
-      date: "May 2025",
-      link: "https://example.com/publication2"
+      title: "AI-Driven Stress Detection for Enhancing Student Well-Being and Academic Performance using Wearable Smart-Watch Data",
+      journal: "Published research work focusing on the application of wearable smartwatch data and AI-driven approaches for real-time stress detection and student well-being. DOI: 10.1201/9781042026333-4",
+      date: "Research Publication",
+      link: "https://doi.org/10.1201/9781042026333-4"
     }
   ];
 
   return (
-    <section id="publications" className="py-10 bg-white dark:bg-gray-900">
-      <div className="container mx-auto px-4">
-        <Card className="mb-6 dark:border-gray-700 dark:bg-gray-800">
+    <section id="publications">
+      <div>
+        <Card className="dark:border-gray-700 dark:bg-gray-800">
           <CardContent className="p-6">
             <div className="flex items-center mb-4">
               <BookOpen className="mr-2 text-portfolio-primary dark:text-blue-400" size={20} />

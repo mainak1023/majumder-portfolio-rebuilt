@@ -12,17 +12,17 @@ const Blog = () => {
   const blogs = blogsData.slice(0, 3);
 
   return (
-    <section id="blog" className="py-16 md:py-20 bg-muted/30">
-      <div className="container mx-auto px-2 sm:px-4">
-        <div className="text-center mb-8 md:mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-3 md:mb-4">Blog</h2>
-          <p className="text-base md:text-lg text-muted-foreground">
+    <section id="blog" className="py-6 md:py-8 rounded-lg bg-muted/30">
+      <div className="px-4">
+        <div className="text-center mb-5 md:mb-6">
+          <h2 className="text-2xl md:text-3xl font-bold mb-2">Blog</h2>
+          <p className="text-sm md:text-base text-muted-foreground">
             Thoughts, insights, and stories from my journey
           </p>
         </div>
 
         {blogs.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6 md:mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-5 md:mb-6">
             {blogs.map((blog) => (
               <Card key={blog.id} className="hover:shadow-lg transition-shadow flex flex-col h-full">
                 {blog.featured_image && (

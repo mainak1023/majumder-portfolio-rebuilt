@@ -19,6 +19,21 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				sans: [
+					'Helvetica Neue',
+					'Helvetica',
+					'Arial',
+					'sans-serif',
+				],
+				heading: [
+					'"Domaine Display Narrow"',
+					'"Domaine Display"',
+					'"Playfair Display"',
+					'Georgia',
+					'serif',
+				],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -98,9 +113,6 @@ export default {
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out'
-			},
-			fontFamily: {
-				inter: ['Inter', 'sans-serif'],
 			},
 			boxShadow: {
 				'card': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',

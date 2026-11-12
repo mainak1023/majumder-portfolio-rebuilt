@@ -8,7 +8,7 @@ const ThemeSelector = () => {
   const { theme } = useTheme();
   
   return (
-    <Card className="mb-6 dark:border-gray-700 dark:bg-gray-800">
+    <Card className="dark:border-gray-700 dark:bg-gray-800">
       <CardContent className="p-6">
         <div className="flex justify-between items-center">
           <div>

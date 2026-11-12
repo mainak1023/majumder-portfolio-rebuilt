@@ -1,79 +1,64 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
-import useWeb3Forms from '@web3forms/react';
 import { Send } from 'lucide-react';
-
 
 const Contact = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-
-  const { submit } = useWeb3Forms({
-    access_key: "c2b1d25b-4384-4969-bbbc-44ba3eed6449",
-    settings: {
-      from_name: "Portfolio Contact Form",
-      subject: "New Contact Form Submission",
-    },
-    onSuccess: (msg, data) => {
-      setIsSubmitting(false);
-      toast({
-        title: "Message sent successfully!",
-        description: "Thanks for reaching out. I'll get back to you soon.",
-      });
-      const form = document.getElementById('contact-form') as HTMLFormElement;
-      if (form) form.reset();
-
-    },
-    onError: (msg, data) => {
-      setIsSubmitting(false);
-      toast({
-        title: "Error sending message",
-        description: "Please try again later or contact me directly.",
-        variant: "destructive",
-      });
-    },
-  });
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-
-
     setIsSubmitting(true);
 
-    const formData = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
     const data = {
       name: formData.get('name'),
       email: formData.get('email'),
       subject: formData.get('subject'),
       message: formData.get('message'),
-
     };
 
-    console.log("Submitting:", data); // Debugging
-
     try {
-      await submit(data);
-    } catch (error) {
-      console.error('Form submission error:', error);
-      setIsSubmitting(false);
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result?.error || 'Failed to send message');
+      }
+
+      toast({
+        title: "Message sent successfully!",
+        description: "Thanks for reaching out. I'll get back to you soon.",
+      });
+      form.reset();
+    } catch (error: any) {
+      console.error('Contact form error:', error);
       toast({
         title: "Error sending message",
-        description: "Please try again later.",
+        description: error?.message || "Please try again later or contact me directly.",
         variant: "destructive",
       });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   return (
-    <section id="contact" className="py-10 bg-white dark:bg-gray-900">
-      <div className="container mx-auto px-4">
-        <Card className="mb-6 dark:border-gray-700 dark:bg-gray-800">
+    <section id="contact">
+      <div>
+        <Card className="dark:border-gray-700 dark:bg-gray-800">
           <CardContent className="p-6">
             <div className="flex items-center mb-4">
               <Send className="mr-2 text-portfolio-primary dark:text-blue-400" size={20} />

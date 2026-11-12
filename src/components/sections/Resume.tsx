@@ -6,9 +6,9 @@ import { Button } from '@/components/ui/button';
 
 const Resume = () => {
   return (
-    <section id="resume" className="py-10 bg-white dark:bg-gray-900">
-      <div className="container mx-auto px-4">
-        <Card className="mb-6 dark:border-gray-700 dark:bg-gray-800">
+    <section id="resume">
+      <div>
+        <Card className="dark:border-gray-700 dark:bg-gray-800">
           <CardContent className="p-6">
             <div className="flex items-center mb-4">
               <FileText className="mr-2 text-portfolio-primary dark:text-blue-400" size={20} />

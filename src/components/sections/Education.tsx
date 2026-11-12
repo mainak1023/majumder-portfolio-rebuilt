@@ -14,23 +14,35 @@ type EducationItem = {
 const Education = () => {
   const educationItems: EducationItem[] = [
     {
-      period: "2019 - 2022",
-      degree: "Bachelor of Computer Science",
-      institution: "Mankar College, The University of Burdwan",
-      location: "Mankar, India"
+      period: "August 2023 – July 2025",
+      degree: "Master of Computer Applications (MCA)",
+      institution: "Dr. B. C. Roy Engineering College, MAKAUT",
+      location: "SGPA: 7.16"
     },
     {
-      period: "2023 - 2025",
-      degree: "Master of Computer Applications",
-      institution: "Dr B C Roy Engineering College, MAKAUT",
-      location: "Durgapur, India"
+      period: "July 2019 – July 2022",
+      degree: "B.Sc. (Honours) in Computer Science",
+      institution: "Mankar College, University of Burdwan",
+      location: "CGPA: 9.06"
+    },
+    {
+      period: "2019",
+      degree: "Higher Secondary Education (10+2)",
+      institution: "Budbud Mahakali High School, WBCHSE",
+      location: "Percentage: 79%"
+    },
+    {
+      period: "2017",
+      degree: "Secondary Education (10th)",
+      institution: "Ramkrishna Ashrama Vidya Pitha, WBBSE",
+      location: "Percentage: 86%"
     }
   ];
 
   return (
-    <section id="education" className="py-10 bg-white dark:bg-gray-900">
-      <div className="container mx-auto px-4">
-        <Card className="mb-6 dark:border-gray-700 dark:bg-gray-800">
+    <section id="education">
+      <div>
+        <Card className="dark:border-gray-700 dark:bg-gray-800">
           <CardContent className="p-6">
             <div className="flex items-center mb-4">
               <GraduationCap className="mr-2 text-portfolio-primary dark:text-blue-400" size={20} />
